@@ -6,3 +6,6 @@
 .DS_Store
 /build
 /captures
+
+# Android Studio project files generated from gradle config
+/.idea
