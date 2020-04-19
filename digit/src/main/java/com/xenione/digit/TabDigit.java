@@ -92,7 +92,7 @@ public class TabDigit extends View implements Runnable {
                 textSize = ta.getDimensionPixelSize(attr, -1);
             } else if (attr == R.styleable.TabDigit_padding) {
                 padding = ta.getDimensionPixelSize(attr, -1);
-            } else if (attr == R.styleable.TabDigit_cornerSize) {
+            } else if (attr == R.styleable.TabDigit_cornersize) {
                 cornerSize = ta.getDimensionPixelSize(attr, -1);
             } else if (attr == R.styleable.TabDigit_textColor) {
                 textColor = ta.getColor(attr, 1);
