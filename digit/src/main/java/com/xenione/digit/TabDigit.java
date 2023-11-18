@@ -10,9 +10,10 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.core.view.ViewCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +93,7 @@ public class TabDigit extends View implements Runnable {
                 textSize = ta.getDimensionPixelSize(attr, -1);
             } else if (attr == R.styleable.TabDigit_padding) {
                 padding = ta.getDimensionPixelSize(attr, -1);
-            } else if (attr == R.styleable.TabDigit_cornerSize) {
+            } else if (attr == R.styleable.TabDigit_digitCornerSize) {
                 cornerSize = ta.getDimensionPixelSize(attr, -1);
             } else if (attr == R.styleable.TabDigit_textColor) {
                 textColor = ta.getColor(attr, 1);
