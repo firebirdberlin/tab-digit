@@ -3,10 +3,11 @@ package com.xenione.demos.digit;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import androidx.core.view.ViewCompat;
 
 import com.xenione.digit.TabDigit;
 
@@ -48,7 +49,6 @@ public class CountdownView extends LinearLayout implements Runnable {
         init();
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public CountdownView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();

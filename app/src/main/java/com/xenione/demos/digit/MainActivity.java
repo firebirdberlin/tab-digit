@@ -1,16 +1,18 @@
 package com.xenione.demos.digit;
 
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -51,18 +53,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        switch (id) {
-            case R.id.nav_config: {
-                showFragment(ConfigFragment.newInstance(), ConfigFragment.TAG);
-                break;
-            }
-            case R.id.nav_clock: {
-                showFragment(ClockFragment.newInstance(), ClockFragment.TAG);
-            }
-            case R.id.nav_countdown: {
-                showFragment(CountdownFragment.newInstance(), CountdownFragment.TAG);
-            }
+        if (id == R.id.nav_config) {
+            showFragment(ConfigFragment.newInstance(), ConfigFragment.TAG);
+        } else if (id == R.id.nav_clock) {
+            showFragment(ClockFragment.newInstance(), ClockFragment.TAG);
+        } else if (id == R.id.nav_countdown) {
+            showFragment(CountdownFragment.newInstance(), CountdownFragment.TAG);
         }
+
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

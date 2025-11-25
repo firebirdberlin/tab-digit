@@ -1,13 +1,14 @@
 package com.xenione.demos.digit;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
+
+import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.fragment.app.Fragment;
 
 import com.xenione.digit.TabDigit;
 
@@ -28,7 +29,7 @@ public class ConfigFragment extends Fragment implements Runnable {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.config_fragment, container, false);
-        tabDigit1 = (TabDigit) view.findViewById(R.id.charView1);
+        tabDigit1 = view.findViewById(R.id.charView1);
         assert tabDigit1 != null;
         ViewCompat.postOnAnimationDelayed(tabDigit1, this, 1000);
 

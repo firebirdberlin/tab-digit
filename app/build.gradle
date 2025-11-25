@@ -1,10 +1,9 @@
 plugins {
-    id 'com.android.library'
-    id 'maven-publish'
+    id 'com.android.application'
 }
 
 android {
-    namespace "com.xenione.libs.digit"
+    namespace "com.xenione.demos.digit"
     compileSdk 36
 
     defaultConfig {
@@ -27,6 +26,5 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'com.google.android.material:material:1.13.0'
     implementation 'com.github.QuadFlask:colorpicker:0.0.15'
-    //implementation project(':digit')
-    implementation 'com.github.firebirdberlin.tab-digit:digit:36.0.1'
+    implementation project(':digit')
 }

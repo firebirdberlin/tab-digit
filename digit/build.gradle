@@ -31,7 +31,7 @@ afterEvaluate {
 
                 groupId = 'com.github.firebirdberlin.tab-digit'
                 artifactId = 'digit'
-                version = '36.0.1'
+                version = '36.0.2'
             }
         }
     }

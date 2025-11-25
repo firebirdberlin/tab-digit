@@ -3,7 +3,7 @@ package com.xenione.demos.digit;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -46,7 +46,6 @@ public class ClockView extends LinearLayout implements Runnable{
         init();
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public ClockView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
@@ -60,12 +59,12 @@ public class ClockView extends LinearLayout implements Runnable{
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mCharHighSecond = (TabDigit) findViewById(R.id.charHighSecond);
-        mCharLowSecond = (TabDigit) findViewById(R.id.charLowSecond);
-        mCharHighMinute = (TabDigit) findViewById(R.id.charHighMinute);
-        mCharLowMinute = (TabDigit) findViewById(R.id.charLowMinute);
-        mCharHighHour = (TabDigit) findViewById(R.id.charHighHour);
-        mCharLowHour = (TabDigit) findViewById(R.id.charLowHour);
+        mCharHighSecond = findViewById(R.id.charHighSecond);
+        mCharLowSecond = findViewById(R.id.charLowSecond);
+        mCharHighMinute = findViewById(R.id.charHighMinute);
+        mCharLowMinute = findViewById(R.id.charLowMinute);
+        mCharHighHour = findViewById(R.id.charHighHour);
+        mCharLowHour = findViewById(R.id.charLowHour);
 
         mCharHighSecond.setTextSize(100);
         mCharHighSecond.setChars(SEXAGISIMAL);
