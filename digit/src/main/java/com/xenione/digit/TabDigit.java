@@ -148,20 +148,24 @@ public class TabDigit extends View implements Runnable {
     }
 
     private void initTabs() {
+        float thickness = mDividerPaint.getStrokeWidth();
+
         // top Tab
         mTopTab = new Tab();
+        mTopTab.setPivotYOffset(-thickness / 2f);
         mTopTab.rotate(180);
         tabs.add(mTopTab);
 
         // bottom Tab
         mBottomTab = new Tab();
+        mBottomTab.setPivotYOffset(thickness / 2f);
         tabs.add(mBottomTab);
 
         // middle Tab
         mMiddleTab = new Tab();
         tabs.add(mMiddleTab);
 
-        tabAnimation = mReverseRotation ? new TabAnimationDown(mTopTab, mBottomTab, mMiddleTab) : new TabAnimationUp(mTopTab, mBottomTab, mMiddleTab);
+        tabAnimation = mReverseRotation ? new TabAnimationDown(mTopTab, mBottomTab, mMiddleTab, thickness) : new TabAnimationUp(mTopTab, mBottomTab, mMiddleTab, thickness);
 
         tabAnimation.initMiddleTab();
 
@@ -224,7 +228,7 @@ public class TabDigit extends View implements Runnable {
     private void drawDivider(Canvas canvas) {
         canvas.save();
         canvas.concat(mProjectionMatrix);
-        canvas.drawLine(-canvas.getWidth() / 2, 0, canvas.getWidth() / 2, 0, mDividerPaint);
+        canvas.drawLine(mMiddleTab.mStartBounds.left, 0, mMiddleTab.mStartBounds.right, 0, mDividerPaint);
         canvas.restore();
     }
 
@@ -260,7 +264,14 @@ public class TabDigit extends View implements Runnable {
         return mChars;
     }
 
+    public void setDividerThickness(float thickness) {
+        mDividerPaint.setStrokeWidth(thickness);
+        invalidate();
+    }
 
+    public float getDividerThickness() {
+        return mDividerPaint.getStrokeWidth();
+    }
     public void setDividerColor(int color) {
         mDividerPaint.setColor(color);
     }
@@ -333,6 +344,8 @@ public class TabDigit extends View implements Runnable {
 
         private int mAlpha;
 
+        private float mPivotYOffset = 0f;
+
         private Matrix mMeasuredMatrixHeight = new Matrix();
 
         private Matrix mMeasuredMatrixWidth = new Matrix();
@@ -377,7 +390,14 @@ public class TabDigit extends View implements Runnable {
 
         public void rotate(int alpha) {
             mAlpha = alpha;
+            mRotationModelViewMatrix.reset();
+            mRotationModelViewMatrix.preTranslate(0, mPivotYOffset);
             MatrixHelper.rotateX(mRotationModelViewMatrix, alpha);
+            mRotationModelViewMatrix.postTranslate(0, -mPivotYOffset);
+        }
+
+        public void setPivotYOffset(float pivotYOffset) {
+            mPivotYOffset = pivotYOffset;
         }
 
         public void draw(Canvas canvas) {

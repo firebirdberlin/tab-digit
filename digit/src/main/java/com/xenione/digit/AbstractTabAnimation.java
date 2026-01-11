@@ -10,15 +10,18 @@ public abstract class AbstractTabAnimation {
     protected final TabDigit.Tab mBottomTab;
     protected final TabDigit.Tab mMiddleTab;
 
+    protected float mThickness;
+
     protected int state;
     protected int mAlpha = 0;
     protected long mTime = -1;
     protected float mElapsedTime = 1000.0f;
 
-    public AbstractTabAnimation(TabDigit.Tab mTopTab, TabDigit.Tab mBottomTab, TabDigit.Tab mMiddleTab) {
+    public AbstractTabAnimation(TabDigit.Tab mTopTab, TabDigit.Tab mBottomTab, TabDigit.Tab mMiddleTab, float thickness) {
         this.mTopTab = mTopTab;
         this.mBottomTab = mBottomTab;
         this.mMiddleTab = mMiddleTab;
+        this.mThickness = thickness;
         initState();
     }
 

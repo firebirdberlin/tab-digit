@@ -5,8 +5,8 @@ package com.xenione.digit;
  */
 public final class TabAnimationDown extends AbstractTabAnimation {
 
-    public TabAnimationDown(TabDigit.Tab mTopTab, TabDigit.Tab mBottomTab, TabDigit.Tab mMiddleTab) {
-        super(mTopTab, mBottomTab, mMiddleTab);
+    public TabAnimationDown(TabDigit.Tab mTopTab, TabDigit.Tab mBottomTab, TabDigit.Tab mMiddleTab, float thickness) {
+        super(mTopTab, mBottomTab, mMiddleTab, thickness);
     }
 
     public void initState() {
@@ -15,6 +15,7 @@ public final class TabAnimationDown extends AbstractTabAnimation {
 
     @Override
     public void initMiddleTab() {
+        mMiddleTab.setPivotYOffset(-mThickness / 2);
         mMiddleTab.rotate(180);
     }
 
@@ -37,12 +38,14 @@ public final class TabAnimationDown extends AbstractTabAnimation {
             case MIDDLE_POSITION: {
                 if (mAlpha < 90) {
                     mMiddleTab.next();
+                    mMiddleTab.setPivotYOffset(mThickness / 2);
                     state = LOWER_POSITION;
                 }
                 break;
             }
             case UPPER_POSITION: {
                 mTopTab.next();
+                mMiddleTab.setPivotYOffset(-mThickness / 2);
                 state = MIDDLE_POSITION;
                 break;
             }
@@ -68,6 +71,7 @@ public final class TabAnimationDown extends AbstractTabAnimation {
                 mTime = -1; // animation finished
             }
         }
+        mMiddleTab.setPivotYOffset(-mThickness / 2);
         mMiddleTab.rotate(180);
     }
 }
